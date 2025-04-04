@@ -66,6 +66,7 @@ interface Serial0/0/0
 !
 ip route 192.168.20.0 255.255.255.0 192.168.30.2
 ip route 192.168.60.0 255.255.255.0 192.168.30.2
+
 🌐 Torre B
 interface GigabitEthernet0/0
  ip address 192.168.20.1 255.255.255.0
@@ -81,6 +82,9 @@ interface Serial0/0/1
 !
 ip route 192.168.10.0 255.255.255.0 192.168.30.1
 ip route 192.168.40.0 255.255.255.0 192.168.30.1
+```
+
+
 🔐 Extra: Servidor FTP para Reliquias Digitales
 
 IP	Servicio	Resultado desde Browser
