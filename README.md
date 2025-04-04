@@ -1,4 +1,138 @@
 # Redes_Ciudades_AdrianaReyes
+# 🧠 Parte I: Conceptos y Teoría
+
+## 🏺 1. El Mural de las Siete Capas
+
+### 🗿 Inscripción
+En la cámara principal del templo se alza un gran mural compuesto por siete franjas horizontales. Los antiguos sabios grabaron símbolos que representan las etapas del viaje que realiza un mensaje digital. Comprendían que toda comunicación debía atravesar una secuencia ritual de transformaciones para alcanzar su destino.
+
+### 🔍 Interpretación moderna: El Modelo OSI
+El mural hace referencia al **Modelo OSI** (Open Systems Interconnection), un modelo de referencia de siete capas que define cómo se comunican los dispositivos en una red.
+
+| Capa Nº | Nombre                      | Descripción técnica                                                                 |
+|--------|------------------------------|--------------------------------------------------------------------------------------|
+| 7      | Capa de Aplicación           | Interfaz directa con el usuario y las aplicaciones. Ej: HTTP, FTP, SMTP.            |
+| 6      | Capa de Presentación         | Traduce y codifica los datos: cifrado, compresión, conversión de formato.           |
+| 5      | Capa de Sesión               | Controla sesiones entre aplicaciones: apertura, gestión y cierre.                   |
+| 4      | Capa de Transporte           | Asegura la entrega confiable y ordenada de los datos. Ej: TCP, UDP.                 |
+| 3      | Capa de Red                  | Encargada del direccionamiento lógico y el enrutamiento. Ej: IP.                    |
+| 2      | Capa de Enlace de Datos      | Forma tramas, controla errores y direcciona mediante direcciones MAC.               |
+| 1      | Capa Física                  | Transmite bits por medios físicos: señales eléctricas, ópticas o inalámbricas.      |
+
+📘 **Importancia**: Este modelo permite entender y diseñar redes de forma modular, facilitando la interoperabilidad entre sistemas distintos.
+
+---
+
+## 📜 2. Los Dos Pergaminos del Mensajero
+
+### 🗿 Inscripción
+Dos rituales quedaron registrados en la piedra:
+- El **Mensajero Confiable**: realiza una triple señal con el receptor, entrega el mensaje, y espera confirmación.
+- El **Mensajero Veloz**: no espera, lanza su mensaje sin confirmar la recepción.
+
+### 🔍 Interpretación moderna: TCP vs UDP
+
+| Característica              | TCP (Mensajero Confiable)           | UDP (Mensajero Veloz)             |
+|----------------------------|-------------------------------------|-----------------------------------|
+| Conexión previa            | Sí                                  | No                                |
+| Control de errores         | Sí                                  | No                                |
+| Retransmisión de paquetes  | Sí                                  | No                                |
+| Orden garantizado          | Sí                                  | No                                |
+| Latencia                   | Mayor                               | Menor                             |
+| Uso típico                 | Web, Email, FTP                     | Video en vivo, Juegos online      |
+
+🔍 **Conclusión**: TCP se usa cuando se necesita fiabilidad; UDP, cuando se requiere velocidad. La elección depende del contexto de la aplicación.
+
+---
+
+## 🧱 3. El Enigma de las Subredes
+
+### 🗿 Inscripción
+> "Nuestro reino digital tenía la dirección sagrada 192.168.50.0.  
+> Los cuatro grandes gremios exigían su propio distrito en la red."
+
+### 🔍 Interpretación moderna: Subnetting (Datos genéricos)
+
+**Objetivo**: Dividir la red 192.168.50.0 en 4 subredes de igual tamaño.
+
+### Cálculo:
+
+1. **Red original**: 192.168.50.0 → Clase C → Máscara por defecto: /24 (255.255.255.0)
+2. **Bits adicionales necesarios**: 2 (porque 2² = 4 subredes)
+3. **Nueva máscara**: /26 = 255.255.255.192
+4. **Direcciones por subred**: 2⁶ = 64 direcciones → 62 válidas para hosts
+
+### Resultado:
+
+| Subred Nº | Rango de hosts utilizables       | Dirección de red | Broadcast         |
+|-----------|----------------------------------|------------------|-------------------|
+| 1         | 192.168.50.1 – 192.168.50.62     | 192.168.50.0     | 192.168.50.63     |
+| 2         | 192.168.50.65 – 192.168.50.126   | 192.168.50.64    | 192.168.50.127    |
+| 3         | 192.168.50.129 – 192.168.50.190  | 192.168.50.128   | 192.168.50.191    |
+| 4         | 192.168.50.193 – 192.168.50.254  | 192.168.50.192   | 192.168.50.255    |
+
+📘 Esto permite asignar una subred por gremio, optimizando la asignación IP.
+
+---
+
+## 🔀 4. La Encrucijada de las Rutas
+
+### 🗿 Inscripción
+Un tótem sagrado con flechas, algunas talladas en piedra y otras móviles, guiaba a los antiguos datos por los caminos adecuados.
+
+### 🔍 Interpretación moderna: Tabla de enrutamiento
+
+Un **router** mantiene una tabla con rutas a distintas redes. Cada entrada especifica:
+
+- Red de destino
+- Máscara de subred
+- Next hop (siguiente salto)
+- Interfaz de salida
+
+### Tipos de enrutamiento:
+
+| Tipo de Ruta      | Simbolismo         | Descripción                                                |
+|-------------------|--------------------|------------------------------------------------------------|
+| Estática          | Flechas talladas   | Configuradas manualmente, no cambian sin intervención      |
+| Dinámica (RIP/OSPF)| Flechas móviles    | Aprendidas automáticamente, se adaptan a cambios en la red |
+
+🔁 La tabla se consulta por cada paquete. Si no se encuentra ruta específica, se usa una por defecto.
+
+---
+
+## 🛡️ 5. El Guardián de la Máscara Única
+
+### 🗿 Inscripción
+> "Cuando un emisario salía, llevaba mi rostro. Nadie vio el suyo.  
+> Cuando el mundo respondía, yo le devolvía el mensaje original."
+
+### 🔍 Interpretación moderna: NAT (Network Address Translation)
+
+**NAT** permite que múltiples dispositivos con IPs privadas accedan a Internet usando una **única IP pública**.
+
+### ¿Cómo funciona?
+
+- El router reemplaza la IP privada del host por su propia IP pública al enviar el paquete.
+- Mantiene una tabla con cada conexión.
+- Al llegar la respuesta, la IP pública se sustituye nuevamente por la del host interno correspondiente.
+
+### Beneficios:
+
+| Ventaja                  | Explicación                                                                 |
+|--------------------------|-----------------------------------------------------------------------------|
+| Conservación de IPs      | Reduce la necesidad de múltiples direcciones IPv4 públicas                 |
+| Seguridad                | Oculta las direcciones internas, dificultando ataques directos             |
+
+🔐 NAT actúa como el **guardián de las máscaras**, gestionando las identidades en la frontera entre el mundo interno y externo.
+
+---
+
+## 🏁 Conclusión
+
+Has recorrido las cámaras del templo digital, descifrando los secretos del **Modelo OSI**, los rituales de transporte, los misterios de las subredes, las rutas ocultas del enrutamiento y el poder del guardián NAT.  
+Cada enigma resuelto te acerca a restaurar por completo el conocimiento ancestral de las redes.
+
+🧭 ¡Ahora estás listo para adentrarte en la segunda parte: la restauración práctica de la red perdida en Cisco Packet Tracer!
 
 # 🏛️ Ejercicio 1: La Ruta Perdida entre Dos Reinos
 
