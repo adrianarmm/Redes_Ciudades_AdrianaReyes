@@ -129,3 +129,110 @@ desde la aplicación **Web Browser** en cualquier PC de la red.
 - ✅ **Accesos a servidor FTP desde cualquier host**
 - ✅ **Direcciones estáticas en routers para todo el tráfico**
 - ✅ **ACL simulando control de acceso ancestral**
+
+
+# 🏰 Ejercicio 2: La Ciudad de las Redes Aisladas
+
+## ✨ Narrativa
+En lo más profundo de las ruinas de la metrópolis ancestral, descubriste una organización social compuesta por gremios que usaban canales sagrados para comunicarse sin interferencias.  
+Gracias a la reactivación del antiguo enrutador del consejo —la Gran Torre Central— y a la reconfiguración del sistema de caminos (Switches y VLANs), estos gremios pueden volver a intercambiar conocimientos.
+
+Has restaurado una arquitectura basada en VLANs y router-on-a-stick, lo que permite que los gremios se comuniquen de manera controlada, manteniendo su autonomía, pero ahora bajo una infraestructura interconectada y eficiente.
+
+---
+
+## 🗺️ Topología (descripción)
+
+![image](https://github.com/user-attachments/assets/3433b272-7bbb-4730-abc5-262a176e87bc)
+
+
+## 📐 Direccionamiento IP
+
+### VLANs de los Gremios
+
+| Gremio         | VLAN | Red IP           | Gateway         |
+|----------------|------|------------------|-----------------|
+| Arquitectos    | 10   | 192.168.10.0/24  | 192.168.10.1    |
+| Escribas       | 20   | 192.168.20.0/24  | 192.168.20.1    |
+| Alquimistas    | 30   | 192.168.30.0/24  | 192.168.30.1    |
+| Historiadores  | 40   | 192.168.40.0/24  | 192.168.40.1    |
+| Administración | 99   | 192.168.99.0/24  | 192.168.99.1    |
+
+---
+
+## ⚙️ Configuración de la Gran Torre Central (Router)
+
+```bash
+interface GigabitEthernet0/0.10
+ encapsulation dot1Q 10
+ ip address 192.168.10.1 255.255.255.0
+!
+interface GigabitEthernet0/0.20
+ encapsulation dot1Q 20
+ ip address 192.168.20.1 255.255.255.0
+!
+interface GigabitEthernet0/0.30
+ encapsulation dot1Q 30
+ ip address 192.168.30.1 255.255.255.0
+!
+interface GigabitEthernet0/0.40
+ encapsulation dot1Q 40
+ ip address 192.168.40.1 255.255.255.0
+!
+interface GigabitEthernet0/0.99
+ encapsulation dot1Q 99
+ ip address 192.168.99.1 255.255.255.0
+!
+interface GigabitEthernet0/0
+ no shutdown
+```
+## 📧 Servidor de Correos (mail.ciudadperdida.com)
+
+- **Dirección IP**: `192.168.99.200`  
+- **VLAN**: 99 (Administración)  
+- **Servicios habilitados**:
+  - SMTP
+  - POP3
+  - DNS (resuelve dominio `ciudadperdida.com`)
+
+### 📥 Cuentas de correo configuradas:
+
+- `arquitecto1@ciudadperdida.com`
+- `arquitecto2@ciudadperdida.com`
+- `escriba1@ciudadperdida.com`
+- `alquimista1@ciudadperdida.com`
+- `historiador1@ciudadperdida.com`
+
+💡 **Todos los mensajes se intercambian correctamente** a través del cliente de correo integrado en los PCs de cada gremio.
+
+---
+
+## 📶 Comprobación de Conectividad
+
+| Desde         | Hacia                | Resultado |
+|---------------|----------------------|-----------|
+| Arquitecto1   | Escriba1             | ✅        |
+| Alquimista1   | Historiador1         | ✅        |
+| Todos los PCs | Servidor de Correos  | ✅        |
+
+---
+
+## 🏷️ Etiquetas Narrativas en la Topología
+
+| Dispositivo       | Nombre Narrativo                        |
+|-------------------|------------------------------------------|
+| Router            | Gran Torre Central del Consejo           |
+| Switch Central    | Núcleo de Convergencia de Gremios        |
+| Server            | Altar del Saber Administrativo           |
+| VLANs             | Canales Sagrados                         |
+
+---
+
+## ✅ Extras Añadidos
+
+- ✅ **Router-on-a-stick** con 5 subinterfaces activas para VLANs
+- ✅ **Servidor de correo SMTP/POP3 funcional** con dominio ficticio
+- ✅ **DNS resuelve correctamente** `mail.ciudadperdida.com`
+- ✅ **Etiquetas narrativas personalizadas** en el diseño gráfico de Packet Tracer
+- ✅ **Comprobación de conectividad con éxito**: `ping`, `Web Browser`, `Correo electrónico`
+- ✅ **Configuración IP estática + gateway correcto en cada gremio**
