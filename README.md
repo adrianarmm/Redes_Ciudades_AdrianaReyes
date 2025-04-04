@@ -84,41 +84,48 @@ ip route 192.168.10.0 255.255.255.0 192.168.30.1
 ip route 192.168.40.0 255.255.255.0 192.168.30.1
 ```
 
+## 🔐 Extra: Servidor FTP para Reliquias Digitales
 
-🔐 Extra: Servidor FTP para Reliquias Digitales
+| IP              | Servicio | Resultado desde Browser               |
+|-----------------|----------|----------------------------------------|
+| 192.168.40.100  | FTP      | ✅ Se muestran archivos en el navegador |
 
-IP	Servicio	Resultado desde Browser
-192.168.40.100	FTP	✅ Se muestran archivos en el navegador
-💡 Puedes acceder al servidor FTP con éxito ingresando ftp://192.168.40.100 desde la aplicación Web Browser en cualquier PC.
+💡 Puedes acceder al servidor FTP con éxito ingresando  
+`ftp://192.168.40.100`  
+desde la aplicación **Web Browser** en cualquier PC de la red.
 
-📶 Comprobación de Pings
+---
 
-Desde	Hacia	Resultado
-Habitante A1	Habitante B1	✅
-Habitante B2	Servidor FTP	✅
-Habitante C	Habitante A2	✅
-A1	192.168.30.2	✅
-🏷️ Etiquetas Narrativas
+## 📶 Comprobación de Pings
 
-Dispositivo	Etiqueta Narrativa
-TorreA	Gran Torre de la Sabiduría
-TorreB	Bastión de los Mensajeros del Sur
-Servidor FTP	Archivo Sagrado de Reliquias Digitales
-Enlace WAN	Ruta Sagrada de Datos
-Habitante C	Viajero de Territorios Olvidados
-🔧 Extras implementados: Reliquias restauradas más allá del mandato
+| Desde         | Hacia           | Resultado |
+|---------------|------------------|-----------|
+| Habitante A1  | Habitante B1     | ✅        |
+| Habitante B2  | Servidor FTP     | ✅        |
+| Habitante C   | Habitante A2     | ✅        |
+| A1            | 192.168.30.2     | ✅        |
 
-✅ Servidor FTP operativo con Web Browser
-✅ Cliente remoto (Habitante C) desde red adicional
-✅ Enlace WAN probado y funcional con subred /30
-✅ Etiquetas narrativas visibles en el mapa de Packet Tracer
-✅ Ping exitoso entre todas las subredes
-✅ Accesos a servidor FTP desde cualquier host
-✅ Direcciones estáticas en routers para todo el tráfico
-✅ (Opcional configurado en pruebas): ACL simulando control de acceso ancestral
-✅ Conclusión
+---
 
-La misión ha sido completada con éxito.
-La red perdida entre los dos reinos ha sido restaurada, y el conocimiento digital puede fluir nuevamente entre las ciudades a través de la Ruta Sagrada.
-Los habitantes ya pueden intercambiar reliquias y mensajes gracias al FTP ancestral, y la civilización tecnológica ha despertado de su letargo.
+## 🏷️ Etiquetas Narrativas
 
+| Dispositivo      | Etiqueta Narrativa                        |
+|------------------|-------------------------------------------|
+| TorreA           | Gran Torre de la Sabiduría                |
+| TorreB           | Bastión de los Mensajeros del Sur         |
+| Servidor FTP     | Archivo Sagrado de Reliquias Digitales    |
+| Enlace WAN       | Ruta Sagrada de Datos                     |
+| Habitante C      | Viajero de Territorios Olvidados          |
+
+---
+
+## 🔧 Extras implementados: Reliquias restauradas más allá del mandato
+
+- ✅ **Servidor FTP operativo con Web Browser**
+- ✅ **Cliente remoto (Habitante C) desde red adicional**
+- ✅ **Enlace WAN probado y funcional con subred /30**
+- ✅ **Etiquetas narrativas visibles en el mapa de Packet Tracer**
+- ✅ **Ping exitoso entre todas las subredes**
+- ✅ **Accesos a servidor FTP desde cualquier host**
+- ✅ **Direcciones estáticas en routers para todo el tráfico**
+- ✅ **ACL simulando control de acceso ancestral**
